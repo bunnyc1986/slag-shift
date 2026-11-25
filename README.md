@@ -2,6 +2,10 @@
 
 A falling-block puzzle for Game Boy Color and ModRetro Chromatic, built with GB Studio. Fill a horizontal row to clear it. A shuffled bag deals all seven shapes before it refills.
 
+| Title screen | Level select | Gameplay |
+| :---: | :---: | :---: |
+| ![Slag Shift logo and controls](docs/screenshots/title.png) | ![Level 1 selected with a 500-point goal and an Endless option](docs/screenshots/level-select.png) | ![A red piece falling onto a colorful stack, with the next piece and score on the right](docs/screenshots/gameplay.png) |
+
 Choose a numbered level or Endless before each run. In numbered play, earning 500 points on Level 1 and another 1,000 on Level 2 advances you through fresh opening stacks. Each level asks for 500 more points than the previous one. The HUD shows the score target for the current level. Unlocks save immediately. After the celebration, the next board starts at zero points and carries over your line count and upcoming piece. Higher levels fall faster and start with taller stacks. Every opening has an empty column down to the floor. Level 15 is the final board and continues until you top out.
 
 Endless starts with an empty well and a steady fall speed. Stack pieces, clear lines, and play for score until the board fills. You can pause and press Select to return to the picker in either mode.

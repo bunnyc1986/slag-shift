@@ -11,12 +11,29 @@
 #include "music_manager.h"
 #include "system.h"
 
-BANKREF_EXTERN(song_banked_embers_Data)
-BANKREF_EXTERN(song_rivet_run_Data)
-BANKREF_EXTERN(song_last_bell_Data)
-extern const hUGESong_t song_banked_embers_Data;
-extern const hUGESong_t song_rivet_run_Data;
-extern const hUGESong_t song_last_bell_Data;
+#define DECLARE_SCORE(symbol) \
+    BANKREF_EXTERN(symbol) \
+    extern const hUGESong_t symbol;
+
+DECLARE_SCORE(song_banked_embers_Data)
+DECLARE_SCORE(song_rivet_run_Data)
+DECLARE_SCORE(song_last_bell_Data)
+DECLARE_SCORE(song_shift_bell_Data)
+DECLARE_SCORE(song_kiln_01_Data)
+DECLARE_SCORE(song_kiln_02_Data)
+DECLARE_SCORE(song_kiln_03_Data)
+DECLARE_SCORE(song_kiln_04_Data)
+DECLARE_SCORE(song_kiln_05_Data)
+DECLARE_SCORE(song_kiln_06_Data)
+DECLARE_SCORE(song_kiln_07_Data)
+DECLARE_SCORE(song_kiln_08_Data)
+DECLARE_SCORE(song_kiln_09_Data)
+DECLARE_SCORE(song_kiln_10_Data)
+DECLARE_SCORE(song_kiln_11_Data)
+DECLARE_SCORE(song_kiln_12_Data)
+DECLARE_SCORE(song_kiln_13_Data)
+DECLARE_SCORE(song_kiln_14_Data)
+DECLARE_SCORE(song_kiln_15_Data)
 
 #define WIDTH 10
 #define HEIGHT 20
@@ -52,6 +69,28 @@ static const palette_color_t inks[] = {
     RGB(2,3,5), RGB(15,5,7), RGB(30,11,13), RGB(31,24,22),
     RGB(2,3,5), RGB(5,8,17), RGB(10,18,30), RGB(24,28,31),
     RGB(2,3,5), RGB(15,7,4), RGB(31,16,6), RGB(31,26,17)
+};
+
+/* Index zero is Endless. Keep both the ROM bank and address for each score. */
+typedef struct { uint8_t bank; const hUGESong_t *song; } score_track_t;
+#define SCORE_ENTRY(symbol) { BANK(symbol), &symbol }
+static const score_track_t board_tracks[] = {
+    SCORE_ENTRY(song_rivet_run_Data),
+    SCORE_ENTRY(song_kiln_01_Data),
+    SCORE_ENTRY(song_kiln_02_Data),
+    SCORE_ENTRY(song_kiln_03_Data),
+    SCORE_ENTRY(song_kiln_04_Data),
+    SCORE_ENTRY(song_kiln_05_Data),
+    SCORE_ENTRY(song_kiln_06_Data),
+    SCORE_ENTRY(song_kiln_07_Data),
+    SCORE_ENTRY(song_kiln_08_Data),
+    SCORE_ENTRY(song_kiln_09_Data),
+    SCORE_ENTRY(song_kiln_10_Data),
+    SCORE_ENTRY(song_kiln_11_Data),
+    SCORE_ENTRY(song_kiln_12_Data),
+    SCORE_ENTRY(song_kiln_13_Data),
+    SCORE_ENTRY(song_kiln_14_Data),
+    SCORE_ENTRY(song_kiln_15_Data),
 };
 
 static const uint8_t fall_period[LEVEL_LIMIT] = {48,42,37,32,28,24,20,17,14,11,9,7,6,5,4};
@@ -321,6 +360,7 @@ static void begin_board(void);
 static void advance_award(void) {
     uint8_t elapsed = AWARD_DURATION - award_ticks;
     if (elapsed == 0) {
+        music_load(BANK(song_shift_bell_Data), &song_shift_bell_Data);
         VBK_REG = 1;
         fill_bkg_rect(1,6,AWARD_WIDTH,AWARD_HEIGHT,8);
         VBK_REG = 0;
@@ -354,6 +394,7 @@ static void spawn(void) {
 }
 
 static void begin_board(void) {
+    const score_track_t *track = &board_tracks[endless ? 0 : level];
     target_met = 0;
     repeat_dir = 0;
     score = 0;
@@ -362,6 +403,7 @@ static void begin_board(void) {
     render_board();
     meter();
     draw_goal(FALSE);
+    music_load(track->bank, track->song);
     spawn();
 }
 
@@ -382,7 +424,6 @@ static void start_game(void) {
     if (endless) fill_bkg_rect(12,14,8,3,BLANK);
     next_piece = take_piece();
     begin_board();
-    music_load(BANK(song_rivet_run_Data), &song_rivet_run_Data);
 }
 
 static void settle(void) {

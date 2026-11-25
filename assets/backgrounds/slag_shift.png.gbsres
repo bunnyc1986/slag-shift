@@ -1,0 +1,13 @@
+{
+  "_resourceType": "background",
+  "id": "d51b9019-d93d-533b-84ea-bcac8bc24191",
+  "name": "Slag Shift",
+  "symbol": "bg_slag_shift",
+  "tileColors": "",
+  "filename": "slag_shift.png",
+  "width": 20,
+  "height": 18,
+  "imageWidth": 160,
+  "imageHeight": 144,
+  "autoColor": false
+}

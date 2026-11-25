@@ -1,0 +1,47 @@
+{
+  "_resourceType": "scene",
+  "id": "12f07015-0a42-504a-8d39-3f689e13ad3a",
+  "_index": 0,
+  "type": "SLAGSHIFT",
+  "name": "Slag Shift",
+  "symbol": "scene_start",
+  "x": 0,
+  "y": 0,
+  "width": 20,
+  "height": 18,
+  "backgroundId": "d51b9019-d93d-533b-84ea-bcac8bc24191",
+  "tilesetId": "",
+  "colorModeOverride": "none",
+  "paletteIds": [
+    "1c561030-6fcb-5781-bda3-9ed5f68b96e1"
+  ],
+  "spritePaletteIds": [],
+  "autoFadeSpeed": 1,
+  "script": [
+    {
+      "command": "EVENT_GBVM_SCRIPT",
+      "args": {
+        "script": "; The Slag Shift scene starts each cue on its game-state transition.",
+        "references": [
+          {
+            "type": "music",
+            "id": "eb78521e-ca5b-5418-81e1-dfadc4999a14"
+          },
+          {
+            "type": "music",
+            "id": "4fa288c7-f926-5a9e-9d29-2859c99e2605"
+          },
+          {
+            "type": "music",
+            "id": "428df43c-f829-564f-ae38-a581ed8e2d7f"
+          }
+        ]
+      },
+      "id": "9cb1d97e-4e02-5cb2-a264-57822c23f50f"
+    }
+  ],
+  "playerHit1Script": [],
+  "playerHit2Script": [],
+  "playerHit3Script": [],
+  "collisions": "0f51+0012+0f2+0012+0f2+0012+0f2+0012+0f2+0012+0f2+0012+0f2+0012+0f2+0012+0f2+0012+0f2+0012+0f2+0012+0f2+0012+0f2+0012+0f15+"
+}

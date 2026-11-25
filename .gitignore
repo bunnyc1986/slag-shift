@@ -1,0 +1,34 @@
+# Local play sessions and generated builds
+/artifacts/
+/build/
+/save-states/
+/node_modules/
+*.sav
+*.srm
+*.gbstate*
+*.log
+__pycache__/
+
+# OS and editor preferences
+.DS_Store
+._*
+.vscode/
+.idea/
+.codex/
+*.gbsproj.local
+*.gbsproj.bak
+*.gbsproj.user
+user_settings.gbsres
+
+# Local configuration and credentials
+.env
+.env.*
+.ssh/
+.aws/
+.npmrc
+.netrc
+.git-credentials
+*.pem
+*.key
+*.p12
+*.pfx

@@ -1,0 +1,8 @@
+{
+  "_resourceType": "project",
+  "name": "Slag Shift",
+  "author": "Codex",
+  "notes": "Stack falling billets and clear full rows in the kiln.",
+  "_version": "4.2.0",
+  "_release": "10"
+}
